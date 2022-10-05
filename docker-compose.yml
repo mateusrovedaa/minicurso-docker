@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  nginx:
+      build:
+          dockerfile: Dockerfile
+          context: .
+      image: portfolio
+      container_name: portfolio-container
+      ports:
+          - "8083:80"
+
+  nginx-volume:
+      image: nginx:latest
+      container_name: portfolio-container-volume
+      ports:
+          - "8084:80"
+      volumes:
+      - ./:/usr/share/nginx/html/
